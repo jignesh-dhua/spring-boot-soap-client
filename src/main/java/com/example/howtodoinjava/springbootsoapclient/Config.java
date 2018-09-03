@@ -56,7 +56,7 @@ public class Config {
 		
 		
 		KeyStore trustStore = KeyStore.getInstance("JKS");
-		trustStore.load(new FileInputStream("/home/ubuntu//cert.pfx"), "damith".toCharArray());
+		trustStore.load(new FileInputStream("/home/ubuntu/trust_store.jks"), "damith".toCharArray());
 
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(trustStore);
