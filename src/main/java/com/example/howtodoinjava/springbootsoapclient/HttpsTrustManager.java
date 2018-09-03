@@ -47,7 +47,7 @@ public class HttpsTrustManager implements X509TrustManager
 //					"C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/final/tempcertfile.crt"));
 //
 			X509Certificate cer6 = (X509Certificate) fact.generateCertificate(new FileInputStream(
-					"C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/final/tempcertfile.crt"));
+					"/home/ubuntu/tempcertfile.crt"));
 
 			return new X509Certificate[] { cer6 };
 		} catch (CertificateException e) {
