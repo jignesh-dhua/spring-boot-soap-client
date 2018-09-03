@@ -115,10 +115,10 @@ public class Config {
 		
 		cryptoFactoryBean.afterPropertiesSet();
 		
-		wss4jSecurityInterceptor.setSecurementActions("Encrypt Signature");
-		
-		wss4jSecurityInterceptor.setSecurementSignatureCrypto(cryptoFactoryBean.getObject());
-		wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
+//		wss4jSecurityInterceptor.setSecurementActions("Encrypt Signature");
+//		
+//		wss4jSecurityInterceptor.setSecurementSignatureCrypto(cryptoFactoryBean.getObject());
+//		wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
 		
 		
 //		wss4jSecurityInterceptor.setValidationActions("Encrypt Signature");
