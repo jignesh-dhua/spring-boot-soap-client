@@ -110,15 +110,15 @@ public class Config {
 		CryptoFactoryBean cryptoFactoryBean = new CryptoFactoryBean();
 		
 		cryptoFactoryBean.setKeyStorePassword("damith");
-		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/cert.pfx"));
-		cryptoFactoryBean.setKeyStoreType("pkcs12");
+		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/identity.jks"));
+		cryptoFactoryBean.setKeyStoreType("JKS");
 		
 		cryptoFactoryBean.afterPropertiesSet();
 		
 		wss4jSecurityInterceptor.setSecurementActions("Encrypt Signature");
 		
 		wss4jSecurityInterceptor.setSecurementSignatureCrypto(cryptoFactoryBean.getObject());
-		//wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
+		wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
 		
 		
 //		wss4jSecurityInterceptor.setValidationActions("Encrypt Signature");
