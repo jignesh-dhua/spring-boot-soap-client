@@ -43,9 +43,7 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 //		                        <password>"+password"+</password>\n +
 //		                        </credentials>");
 		                
-		                String headers = "<wsa:To xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">http://es.kvk.nl/kvk-DataservicePP/2015/02</wsa:To>"+
-		                "<wsa:Action xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">http://es.kvk.nl/ophalenInschrijving</wsa:Action>"+
-		                "<wsa:MessageID xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">uuid:7ad97e7a-26d7-4c4e-997c-1f7e0e88aa97</wsa:MessageID>";
+		                String headers = "<wsa:To xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">http://es.kvk.nl/kvk-DataservicePP/2015/02</wsa:To><wsa:Action xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">http://es.kvk.nl/ophalenInschrijving</wsa:Action><wsa:MessageID xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">uuid:7ad97e7a-26d7-4c4e-997c-1f7e0e88aa97</wsa:MessageID>";
 		                
 		                StringSource headerSource = new StringSource(headers);
 		                Transformer transformer = TransformerFactory.newInstance().newTransformer();
