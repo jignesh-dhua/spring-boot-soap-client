@@ -56,17 +56,17 @@ public class Config {
 		
 		
 		KeyStore trustStore = KeyStore.getInstance("JKS");
-		trustStore.load(new FileInputStream("/home/ubuntu/new_trust_keystore_1.jks"), "damith".toCharArray());
+		trustStore.load(new FileInputStream("/home/ubuntu//cert.pfx"), "damith".toCharArray());
 
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(trustStore);
 		TrustManager[] tms = tmf.getTrustManagers();
 		
 		 HttpsUrlConnectionMessageSender sender = new HttpsUrlConnectionMessageSender();
-		    sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
-		 //sender.setTrustManagers(tms);
+		 //   sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
+		 sender.setTrustManagers(tms);
 		 sender.setKeyManagers(kms);
-		    sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
+		 sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
 
 		    
 		    
