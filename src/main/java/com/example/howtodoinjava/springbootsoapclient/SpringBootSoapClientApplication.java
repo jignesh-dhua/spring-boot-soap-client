@@ -46,16 +46,16 @@ public class SpringBootSoapClientApplication {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws KeyStoreException, NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException, UnrecoverableKeyException, KeyManagementException {
 	
-		System.setProperty("javax.net.ssl.trustStore", "/home/ubuntu/new_trust_keystore_1.jks");
+		System.setProperty("javax.net.ssl.trustStore", "/home/ubuntu/cert.pfx");
 	    System.setProperty("javax.net.ssl.trustStorePassword", "damith");
-	    System.setProperty("javax.net.ssl.trustStoreType", "jks");
+	    System.setProperty("javax.net.ssl.trustStoreType", "PKCS12");
 //
 //	    //my certificate and password
 //	    System.setProperty("javax.net.ssl.keyStore", "C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/cert.pfx");
 //	    System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 //	    
-	    System.setProperty("javax.net.ssl.keyStore", "/home/ubuntu/identity.jks");
-	    System.setProperty("javax.net.ssl.keyStoreType", "jks");
+	    System.setProperty("javax.net.ssl.keyStore", "/home/ubuntu/cert.pfx");
+	    System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 	    System.setProperty("javax.net.ssl.keyStorePassword", "damith");
 	    
 		

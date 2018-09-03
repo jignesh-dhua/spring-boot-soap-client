@@ -47,8 +47,8 @@ public class Config {
 		client.setInterceptors(new ClientInterceptor[] {wss4jSecurityInterceptor()});
 		
 		
-		KeyStore clientStore = KeyStore.getInstance("JKS");
-		clientStore.load(new FileInputStream(new File("/home/ubuntu/identity.jks")), "damith".toCharArray());
+		KeyStore clientStore = KeyStore.getInstance("PKCS12");
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/cert.pfx")), "damith".toCharArray());
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmf.init(clientStore, "damith".toCharArray());
 		
@@ -110,8 +110,8 @@ public class Config {
 		CryptoFactoryBean cryptoFactoryBean = new CryptoFactoryBean();
 		
 		cryptoFactoryBean.setKeyStorePassword("damith");
-		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/identity.jks"));
-		cryptoFactoryBean.setKeyStoreType("JKS");
+		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/cert.pfx"));
+		cryptoFactoryBean.setKeyStoreType("PKCS12");
 		
 		cryptoFactoryBean.afterPropertiesSet();
 		
