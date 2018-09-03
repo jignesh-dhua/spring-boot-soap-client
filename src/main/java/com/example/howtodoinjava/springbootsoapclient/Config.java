@@ -121,9 +121,10 @@ public class Config {
 		wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
 		
 		
-		wss4jSecurityInterceptor.setValidationActions("Encrypt Signature");
-		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
-		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
+//		wss4jSecurityInterceptor.setValidationActions("Encrypt Signature");
+//		
+//		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
+//		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
 		
 		
 		wss4jSecurityInterceptor.setSecurementSignatureKeyIdentifier("DirectReference");
