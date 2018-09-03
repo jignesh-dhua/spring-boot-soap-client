@@ -48,7 +48,7 @@ public class Config {
 		
 		
 		KeyStore clientStore = KeyStore.getInstance("JKS");
-		clientStore.load(new FileInputStream(new File("C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/final/identity.jks")), "damith".toCharArray());
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/identity.jks")), "damith".toCharArray());
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmf.init(clientStore, "damith".toCharArray());
 		
@@ -56,7 +56,7 @@ public class Config {
 		
 		
 		KeyStore trustStore = KeyStore.getInstance("JKS");
-		trustStore.load(new FileInputStream("C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/final/new_trust_keystore_1.jks"), "damith".toCharArray());
+		trustStore.load(new FileInputStream("/home/ubuntu/new_trust_keystore_1.jks"), "damith".toCharArray());
 
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(trustStore);
@@ -110,7 +110,7 @@ public class Config {
 		CryptoFactoryBean cryptoFactoryBean = new CryptoFactoryBean();
 		
 		cryptoFactoryBean.setKeyStorePassword("damith");
-		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/cert.pfx"));
+		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/cert.pfx"));
 		cryptoFactoryBean.setKeyStoreType("pkcs12");
 		
 		cryptoFactoryBean.afterPropertiesSet();
