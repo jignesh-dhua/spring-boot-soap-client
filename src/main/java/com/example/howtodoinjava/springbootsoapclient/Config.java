@@ -66,7 +66,7 @@ public class Config {
 		 //   sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
 		 sender.setTrustManagers(tms);
 		 sender.setKeyManagers(kms);
-		 sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
+		 //sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
 
 		    
 		    
