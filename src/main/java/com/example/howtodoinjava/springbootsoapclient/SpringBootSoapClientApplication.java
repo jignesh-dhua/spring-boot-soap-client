@@ -60,33 +60,33 @@ public class SpringBootSoapClientApplication {
 	    
 		
 		
-		KeyStore clientStore = KeyStore.getInstance("PKCS12");
-		clientStore.load(new FileInputStream(new File("/home/ubuntu/cert.pfx")), "damith".toCharArray());
-		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-		kmf.init(clientStore, "damith".toCharArray());
-		KeyManager[] kms = kmf.getKeyManagers();
-
-		// Assuming that you imported the CA Cert "Subject: CN=MBIIS CA, OU=MBIIS,
-		// O=DAIMLER, C=DE"
-		// to your cacerts Store.
-		KeyStore trustStore = KeyStore.getInstance("PKCS12");
-		trustStore.load(new FileInputStream("/home/ubuntu/cert.pfx"), "damith".toCharArray());
-
-		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-		tmf.init(trustStore);
-		TrustManager[] tms = tmf.getTrustManagers();
-
-		final SSLContext sslContext = SSLContext.getInstance("TLS");
-		//sslContext.init(kms, tms, new SecureRandom());
-		
-		sslContext.init(kms, new X509TrustManager[]{new HttpsTrustManager()}, new SecureRandom());
-		
-		SSLContext.setDefault(sslContext);
-
-		HostnameVerifier hostnameVerifier = NoopHostnameVerifier.INSTANCE;
-
-		HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
-		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
+//		KeyStore clientStore = KeyStore.getInstance("PKCS12");
+//		clientStore.load(new FileInputStream(new File("/home/ubuntu/cert.pfx")), "damith".toCharArray());
+//		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+//		kmf.init(clientStore, "damith".toCharArray());
+//		KeyManager[] kms = kmf.getKeyManagers();
+//
+//		// Assuming that you imported the CA Cert "Subject: CN=MBIIS CA, OU=MBIIS,
+//		// O=DAIMLER, C=DE"
+//		// to your cacerts Store.
+//		KeyStore trustStore = KeyStore.getInstance("PKCS12");
+//		trustStore.load(new FileInputStream("/home/ubuntu/cert.pfx"), "damith".toCharArray());
+//
+//		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+//		tmf.init(trustStore);
+//		TrustManager[] tms = tmf.getTrustManagers();
+//
+//		final SSLContext sslContext = SSLContext.getInstance("TLS");
+//		//sslContext.init(kms, tms, new SecureRandom());
+//		
+//		sslContext.init(kms, new X509TrustManager[]{new HttpsTrustManager()}, new SecureRandom());
+//		
+//		SSLContext.setDefault(sslContext);
+//
+//		HostnameVerifier hostnameVerifier = NoopHostnameVerifier.INSTANCE;
+//
+//		HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+//		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
 		
 		SpringApplication.run(SpringBootSoapClientApplication.class, args);
 	}

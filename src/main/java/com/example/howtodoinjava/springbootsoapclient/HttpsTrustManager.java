@@ -49,7 +49,7 @@ public class HttpsTrustManager implements X509TrustManager
 			X509Certificate cer6 = (X509Certificate) fact.generateCertificate(new FileInputStream(
 					"/home/ubuntu/tempcertfile.crt"));
 
-			return new X509Certificate[] { cer6 };
+		//	return new X509Certificate[] { cer6 };
 		} catch (CertificateException e) {
 			e.printStackTrace();
 			return new X509Certificate[] {};
@@ -58,7 +58,7 @@ public class HttpsTrustManager implements X509TrustManager
 			return new X509Certificate[] {};
 		}
 
-		//return new X509Certificate[] {};
+		return new X509Certificate[] {};
 	}
 
 }
