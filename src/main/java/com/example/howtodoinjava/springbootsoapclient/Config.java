@@ -102,8 +102,8 @@ public class Config {
 		
 		wss4jSecurityInterceptor.setSecurementSignatureCrypto(cryptoFactoryBean.getObject());
 		wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
-		wss4jSecurityInterceptor.setSecurementSignatureAlgorithm("http://www.w3.org/2000/09/xmldsig#rsa-sha1");
-        wss4jSecurityInterceptor.setSecurementSignatureDigestAlgorithm("http://www.w3.org/2000/09/xmldsig#sha1");
+		//wss4jSecurityInterceptor.setSecurementSignatureAlgorithm("http://www.w3.org/2000/09/xmldsig#rsa-sha1");
+        //wss4jSecurityInterceptor.setSecurementSignatureDigestAlgorithm("http://www.w3.org/2000/09/xmldsig#sha1");
         
 		
 		

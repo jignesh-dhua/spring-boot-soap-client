@@ -58,7 +58,8 @@ public class HttpsTrustManager implements X509TrustManager
 //			return new X509Certificate[] {};
 //		}
 
-		return new X509Certificate[] {};
+		//return new X509Certificate[] {};
+		return null;
 	}
 
 }
