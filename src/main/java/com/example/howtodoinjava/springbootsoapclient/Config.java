@@ -83,7 +83,6 @@ public class Config {
 		Wss4jSecurityInterceptor wss4jSecurityInterceptor =new Wss4jSecurityInterceptor();
 		
 		
-		wss4jSecurityInterceptor.setSecurementActions("Signature");
 		wss4jSecurityInterceptor.setSecurementUsername("cert");
 		wss4jSecurityInterceptor.setSecurementPassword("damith");
 		
@@ -96,12 +95,18 @@ public class Config {
 		cryptoFactoryBean.setKeyStoreType("JKS");
 		cryptoFactoryBean.setTrustStorePassword("damith");
 		
+		
 		cryptoFactoryBean.afterPropertiesSet();
 		
-		wss4jSecurityInterceptor.setSecurementActions("Signature");
+		wss4jSecurityInterceptor.setSecurementActions("Signature Timestamp");
 		
 		wss4jSecurityInterceptor.setSecurementSignatureCrypto(cryptoFactoryBean.getObject());
 		wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
+		wss4jSecurityInterceptor.setSecurementSignatureAlgorithm("http://www.w3.org/2000/09/xmldsig#rsa-sha1");
+        wss4jSecurityInterceptor.setSecurementSignatureDigestAlgorithm("http://www.w3.org/2000/09/xmldsig#sha1");
+        
+		
+		
 		
 		
 		wss4jSecurityInterceptor.setValidationActions("Signature");
