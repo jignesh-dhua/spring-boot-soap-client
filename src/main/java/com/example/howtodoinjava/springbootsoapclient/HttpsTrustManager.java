@@ -28,8 +28,8 @@ public class HttpsTrustManager implements X509TrustManager
 	public X509Certificate[] getAcceptedIssuers() {
 
 		CertificateFactory fact;
-		try {
-			fact = CertificateFactory.getInstance("X.509");
+//		try {
+//			fact = CertificateFactory.getInstance("X.509");
 //
 //			X509Certificate cer1 = (X509Certificate) fact.generateCertificate(new FileInputStream(
 //					"C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/final/development_companyinfo_bridgefund_nl.crt"));
@@ -46,17 +46,17 @@ public class HttpsTrustManager implements X509TrustManager
 //			X509Certificate cer5 = (X509Certificate) fact.generateCertificate(new FileInputStream(
 //					"C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/final/tempcertfile.crt"));
 //
-			X509Certificate cer6 = (X509Certificate) fact.generateCertificate(new FileInputStream(
-					"/home/ubuntu/tempcertfile.crt"));
+//			X509Certificate cer6 = (X509Certificate) fact.generateCertificate(new FileInputStream(
+//					"C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/final/tempcertfile.crt"));
 
 		//	return new X509Certificate[] { cer6 };
-		} catch (CertificateException e) {
-			e.printStackTrace();
-			return new X509Certificate[] {};
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return new X509Certificate[] {};
-		}
+//		} catch (CertificateException e) {
+//			e.printStackTrace();
+//			return new X509Certificate[] {};
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//			return new X509Certificate[] {};
+//		}
 
 		return new X509Certificate[] {};
 	}

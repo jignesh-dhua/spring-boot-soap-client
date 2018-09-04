@@ -2,6 +2,7 @@ package com.example.howtodoinjava.springbootsoapclient;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.UUID;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.Transformer;
@@ -56,7 +57,7 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		        	
 		        	SaajSoapMessage soapMessage = (SaajSoapMessage) message;
 		            SoapHeaderElement messageId =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "MessageID", "wsa"));
-		            messageId.setText("uuid:7ad97e7a-26d7-4c4e-997c-1f7e0e88aa97");
+		            messageId.setText("uuid:" + UUID.randomUUID().toString());
 		            
 		            
 		            SoapHeaderElement to =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "To", "wsa"));

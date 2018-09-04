@@ -47,8 +47,8 @@ public class Config {
 		client.setInterceptors(new ClientInterceptor[] {wss4jSecurityInterceptor()});
 		
 		
-		KeyStore clientStore = KeyStore.getInstance("PKCS12");
-		clientStore.load(new FileInputStream(new File("/home/ubuntu/cert.pfx")), "damith".toCharArray());
+		KeyStore clientStore = KeyStore.getInstance("JKS");
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/development_companyinfo_bridgefund_nl.jks")), "damith".toCharArray());
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmf.init(clientStore, "damith".toCharArray());
 		
@@ -56,40 +56,22 @@ public class Config {
 		
 		
 		KeyStore trustStore = KeyStore.getInstance("JKS");
-		trustStore.load(new FileInputStream("/home/ubuntu/trust_store.jks"), "damith".toCharArray());
+		trustStore.load(new FileInputStream("/home/ubuntu/development_companyinfo_bridgefund_nl.jks"), "damith".toCharArray());
 
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(trustStore);
 		TrustManager[] tms = tmf.getTrustManagers();
 		
 		 HttpsUrlConnectionMessageSender sender = new HttpsUrlConnectionMessageSender();
-		 //   sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
-		 sender.setTrustManagers(tms);
+		    sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
+		 //sender.setTrustManagers(tms);
 		 sender.setKeyManagers(kms);
 		 //sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
 
 		    
-		    
-//		    RequestConfig config = RequestConfig
-//		            .custom()
-//		            .setProxy(new HttpHost("ouparray.oup.com", 8080, "http"))
-//		            .build();
-//
-//		    CloseableHttpClient client1 = HttpClients
-//		            .custom()
-//		            .setDefaultRequestConfig(config)
-//		            .build();
-//
-//		    HttpComponentsMessageSender messageSender = new HttpComponentsMessageSender(client1);
-		    
-		    
 		    client.setMessageSender(sender);
 		    
-
-
-	        
-		    
-		    client.setMessageSender(sender);
+	    client.setMessageSender(sender);
 //		client.setMarshaller(marshaller);
 //		client.setUnmarshaller(marshaller);
 		return client;
@@ -110,8 +92,9 @@ public class Config {
 		CryptoFactoryBean cryptoFactoryBean = new CryptoFactoryBean();
 		
 		cryptoFactoryBean.setKeyStorePassword("damith");
-		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/cert.pfx"));
-		cryptoFactoryBean.setKeyStoreType("PKCS12");
+		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/development_companyinfo_bridgefund_nl.jks"));
+		cryptoFactoryBean.setKeyStoreType("JKS");
+		cryptoFactoryBean.setTrustStorePassword("damith");
 		
 		cryptoFactoryBean.afterPropertiesSet();
 		
