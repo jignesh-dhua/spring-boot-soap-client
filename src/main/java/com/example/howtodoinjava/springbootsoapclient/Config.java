@@ -63,15 +63,15 @@ public class Config {
 		TrustManager[] tms = tmf.getTrustManagers();
 		
 		 HttpsUrlConnectionMessageSender sender = new HttpsUrlConnectionMessageSender();
-		 //sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
-		 sender.setTrustManagers(tms);
+		 sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
+		 //sender.setTrustManagers(tms);
 		 sender.setKeyManagers(kms);
 		 //sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
 
 		    
 		    client.setMessageSender(sender);
 		    
-	    client.setMessageSender(sender);
+	    //client.setMessageSender(sender);
 //		client.setMarshaller(marshaller);
 //		client.setUnmarshaller(marshaller);
 		return client;
