@@ -84,7 +84,7 @@ public class Config {
 		
 		
 		wss4jSecurityInterceptor.setSecurementActions("Signature");
-		wss4jSecurityInterceptor.setSecurementUsername("cert");
+		//wss4jSecurityInterceptor.setSecurementUsername("cert");
 		wss4jSecurityInterceptor.setSecurementPassword("damith");
 		
 		
