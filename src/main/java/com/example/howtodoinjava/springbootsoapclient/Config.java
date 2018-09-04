@@ -98,16 +98,16 @@ public class Config {
 		
 		cryptoFactoryBean.afterPropertiesSet();
 		
-		wss4jSecurityInterceptor.setSecurementActions("Encrypt Signature");
+		wss4jSecurityInterceptor.setSecurementActions("Signature");
 		
 		wss4jSecurityInterceptor.setSecurementSignatureCrypto(cryptoFactoryBean.getObject());
 		wss4jSecurityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBean.getObject());
 		
 		
-//		wss4jSecurityInterceptor.setValidationActions("Encrypt Signature");
-//		
-//		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
-//		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
+		wss4jSecurityInterceptor.setValidationActions("Signature");
+		
+		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
+		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
 		
 		
 		wss4jSecurityInterceptor.setSecurementSignatureKeyIdentifier("DirectReference");
