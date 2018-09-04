@@ -44,7 +44,7 @@ public class Config {
 		client.setDefaultUri("https://webservices.preprod.kvk.nl/postbus2");
 		
 		
-		client.setInterceptors(new ClientInterceptor[] {wss4jSecurityInterceptor()});
+		//client.setInterceptors(new ClientInterceptor[] {wss4jSecurityInterceptor()});
 		
 		
 		KeyStore clientStore = KeyStore.getInstance("JKS");
@@ -84,7 +84,7 @@ public class Config {
 		
 		
 		wss4jSecurityInterceptor.setSecurementActions("Signature");
-		//wss4jSecurityInterceptor.setSecurementUsername("cert");
+		wss4jSecurityInterceptor.setSecurementUsername("cert");
 		wss4jSecurityInterceptor.setSecurementPassword("damith");
 		
 		
