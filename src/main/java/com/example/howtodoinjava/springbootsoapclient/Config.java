@@ -48,7 +48,7 @@ public class Config {
 		
 		
 		KeyStore clientStore = KeyStore.getInstance("JKS");
-		clientStore.load(new FileInputStream(new File("/home/ubuntu/development_companyinfo_bridgefund_nl.jks")), "damith".toCharArray());
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks")), "damith".toCharArray());
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmf.init(clientStore, "damith".toCharArray());
 		
@@ -56,7 +56,7 @@ public class Config {
 		
 		
 		KeyStore trustStore = KeyStore.getInstance("JKS");
-		trustStore.load(new FileInputStream("/home/ubuntu/development_companyinfo_bridgefund_nl.jks"), "damith".toCharArray());
+		trustStore.load(new FileInputStream("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks"), "damith".toCharArray());
 
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(trustStore);
@@ -92,7 +92,7 @@ public class Config {
 		CryptoFactoryBean cryptoFactoryBean = new CryptoFactoryBean();
 		
 		cryptoFactoryBean.setKeyStorePassword("damith");
-		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/development_companyinfo_bridgefund_nl.jks"));
+		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks"));
 		cryptoFactoryBean.setKeyStoreType("JKS");
 		cryptoFactoryBean.setTrustStorePassword("damith");
 		
