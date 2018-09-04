@@ -69,7 +69,7 @@ public class Config {
 		 //sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
 
 		    
-		    client.setMessageSender(sender);
+		    //client.setMessageSender(sender);
 		    
 	    //client.setMessageSender(sender);
 //		client.setMarshaller(marshaller);
