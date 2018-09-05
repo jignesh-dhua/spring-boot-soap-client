@@ -47,25 +47,25 @@ public class Config {
 		client.setInterceptors(new ClientInterceptor[] {wss4jSecurityInterceptor()});
 		
 		
-//		KeyStore clientStore = KeyStore.getInstance("JKS");
-//		clientStore.load(new FileInputStream(new File("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks")), "damith".toCharArray());
-//		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-//		kmf.init(clientStore, "damith".toCharArray());
-//		
-//		KeyManager[] kms = kmf.getKeyManagers();
-//		
-//		
-//		KeyStore trustStore = KeyStore.getInstance("JKS");
-//		trustStore.load(new FileInputStream("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks"), "damith".toCharArray());
-//
-//		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-//		tmf.init(trustStore);
-//		TrustManager[] tms = tmf.getTrustManagers();
-//		
-//		 HttpsUrlConnectionMessageSender sender = new HttpsUrlConnectionMessageSender();
-//		 sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
-//		 //sender.setTrustManagers(tms);
-//		 sender.setKeyManagers(kms);
+		KeyStore clientStore = KeyStore.getInstance("JKS");
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks")), "damith".toCharArray());
+		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+		kmf.init(clientStore, "damith".toCharArray());
+		
+		KeyManager[] kms = kmf.getKeyManagers();
+		
+		
+		KeyStore trustStore = KeyStore.getInstance("JKS");
+		trustStore.load(new FileInputStream("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks"), "damith".toCharArray());
+
+		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+		tmf.init(trustStore);
+		TrustManager[] tms = tmf.getTrustManagers();
+		
+		 HttpsUrlConnectionMessageSender sender = new HttpsUrlConnectionMessageSender();
+		 sender.setTrustManagers(new TrustManager[] {new HttpsTrustManager()});
+		 //sender.setTrustManagers(tms);
+		 sender.setKeyManagers(kms);
 		 //sender.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
 
 		    
@@ -109,7 +109,8 @@ public class Config {
 		
 		wss4jSecurityInterceptor.setSecurementSignatureParts(
 	                "{Element}{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd}Timestamp;" +
-	                        "{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body"
+	                "{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body"+
+	                "{Element}{http://schemas.kvk.nl/schemas/hrip/dataservice/2015/02}Body"
 	        );
 		
 		
