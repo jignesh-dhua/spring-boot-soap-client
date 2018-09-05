@@ -114,10 +114,10 @@ public class Config {
 	        );
 		
 		
-		wss4jSecurityInterceptor.setValidationActions("Signature Timestamp");
-		
-		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
-		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
+//		wss4jSecurityInterceptor.setValidationActions("Signature Timestamp");
+//		
+//		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
+//		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
 		
 		
 		wss4jSecurityInterceptor.setSecurementSignatureKeyIdentifier("DirectReference");
