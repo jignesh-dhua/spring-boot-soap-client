@@ -46,47 +46,47 @@ public class SpringBootSoapClientApplication {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws KeyStoreException, NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException, UnrecoverableKeyException, KeyManagementException {
 	
-		System.setProperty("javax.net.ssl.trustStore", "/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks");
-	    System.setProperty("javax.net.ssl.trustStorePassword", "damith");
-	    System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+//		System.setProperty("javax.net.ssl.trustStore", "/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks");
+//	    System.setProperty("javax.net.ssl.trustStorePassword", "damith");
+//	    System.setProperty("javax.net.ssl.trustStoreType", "JKS");
 //
 //	    //my certificate and password
 //	    System.setProperty("javax.net.ssl.keyStore", "C:/Users/dhuaj/Documents/Personal/soapUiPoject/certificates/cert.pfx");
 //	    System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 //	    
-	    System.setProperty("javax.net.ssl.keyStore", "/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks");
-	    System.setProperty("javax.net.ssl.keyStoreType", "JKS");
-	    System.setProperty("javax.net.ssl.keyStorePassword", "damith");
+//	    System.setProperty("javax.net.ssl.keyStore", "/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks");
+//	    System.setProperty("javax.net.ssl.keyStoreType", "JKS");
+//	    System.setProperty("javax.net.ssl.keyStorePassword", "damith");
 	    
 		
 		
-//		KeyStore clientStore = KeyStore.getInstance("PKCS12");
-//		clientStore.load(new FileInputStream(new File("/home/ubuntu/cert.pfx")), "damith".toCharArray());
-//		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-//		kmf.init(clientStore, "damith".toCharArray());
-//		KeyManager[] kms = kmf.getKeyManagers();
-//
-//		// Assuming that you imported the CA Cert "Subject: CN=MBIIS CA, OU=MBIIS,
-//		// O=DAIMLER, C=DE"
-//		// to your cacerts Store.
-//		KeyStore trustStore = KeyStore.getInstance("PKCS12");
-//		trustStore.load(new FileInputStream("/home/ubuntu/cert.pfx"), "damith".toCharArray());
-//
-//		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-//		tmf.init(trustStore);
-//		TrustManager[] tms = tmf.getTrustManagers();
-//
-//		final SSLContext sslContext = SSLContext.getInstance("TLS");
-//		//sslContext.init(kms, tms, new SecureRandom());
-//		
-//		sslContext.init(kms, new X509TrustManager[]{new HttpsTrustManager()}, new SecureRandom());
-//		
-//		SSLContext.setDefault(sslContext);
-//
-//		HostnameVerifier hostnameVerifier = NoopHostnameVerifier.INSTANCE;
-//
-//		HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
-//		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
+		KeyStore clientStore = KeyStore.getInstance("PKCS12");
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/cert.pfx")), "damith".toCharArray());
+		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+		kmf.init(clientStore, "damith".toCharArray());
+		KeyManager[] kms = kmf.getKeyManagers();
+
+		// Assuming that you imported the CA Cert "Subject: CN=MBIIS CA, OU=MBIIS,
+		// O=DAIMLER, C=DE"
+		// to your cacerts Store.
+		KeyStore trustStore = KeyStore.getInstance("PKCS12");
+		trustStore.load(new FileInputStream("/home/ubuntu/cert.pfx"), "damith".toCharArray());
+
+		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+		tmf.init(trustStore);
+		TrustManager[] tms = tmf.getTrustManagers();
+
+		final SSLContext sslContext = SSLContext.getInstance("TLS");
+		//sslContext.init(kms, tms, new SecureRandom());
+		
+		sslContext.init(kms, new X509TrustManager[]{new HttpsTrustManager()}, new SecureRandom());
+		
+		SSLContext.setDefault(sslContext);
+
+		HostnameVerifier hostnameVerifier = NoopHostnameVerifier.INSTANCE;
+
+		HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
 		
 		SpringApplication.run(SpringBootSoapClientApplication.class, args);
 	}
