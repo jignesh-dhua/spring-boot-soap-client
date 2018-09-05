@@ -60,8 +60,8 @@ public class SpringBootSoapClientApplication {
 	    
 		
 		
-		KeyStore clientStore = KeyStore.getInstance("PKCS12");
-		clientStore.load(new FileInputStream(new File("/home/ubuntu/cert.pfx")), "damith".toCharArray());
+		KeyStore clientStore = KeyStore.getInstance("JKS");
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.pfx")), "damith".toCharArray());
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmf.init(clientStore, "damith".toCharArray());
 		KeyManager[] kms = kmf.getKeyManagers();
@@ -69,8 +69,8 @@ public class SpringBootSoapClientApplication {
 		// Assuming that you imported the CA Cert "Subject: CN=MBIIS CA, OU=MBIIS,
 		// O=DAIMLER, C=DE"
 		// to your cacerts Store.
-		KeyStore trustStore = KeyStore.getInstance("PKCS12");
-		trustStore.load(new FileInputStream("/home/ubuntu/cert.pfx"), "damith".toCharArray());
+		KeyStore trustStore = KeyStore.getInstance("JKS");
+		trustStore.load(new FileInputStream("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.pfx"), "damith".toCharArray());
 
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(trustStore);
