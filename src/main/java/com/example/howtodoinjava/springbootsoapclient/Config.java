@@ -109,8 +109,7 @@ public class Config {
 		
 		wss4jSecurityInterceptor.setSecurementSignatureParts(
 	                "{Element}{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd}Timestamp;" +
-	                "{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body;"+
-	                "{Element}{http://schemas.kvk.nl/schemas/hrip/dataservice/2015/02}ophalenInschrijvingRequest"
+	                "{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body"
 	        );
 		
 		
