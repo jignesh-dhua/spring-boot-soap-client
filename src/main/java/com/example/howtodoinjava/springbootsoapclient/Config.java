@@ -48,7 +48,7 @@ public class Config {
 		
 		
 		KeyStore clientStore = KeyStore.getInstance("JKS");
-		clientStore.load(new FileInputStream(new File("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks")), "damith".toCharArray());
+		clientStore.load(new FileInputStream(new File("/home/ubuntu/final.jks")), "damith".toCharArray());
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmf.init(clientStore, "damith".toCharArray());
 		
@@ -56,7 +56,7 @@ public class Config {
 		
 		
 		KeyStore trustStore = KeyStore.getInstance("JKS");
-		trustStore.load(new FileInputStream("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks"), "damith".toCharArray());
+		trustStore.load(new FileInputStream("/home/ubuntu/final"), "damith".toCharArray());
 
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(trustStore);
@@ -72,8 +72,8 @@ public class Config {
 		    client.setMessageSender(sender);
 		    
 	    //client.setMessageSender(sender);
-//		client.setMarshaller(marshaller);
-//		client.setUnmarshaller(marshaller);
+		client.setMarshaller(marshaller);
+		client.setUnmarshaller(marshaller);
 		return client;
 	}
 
@@ -91,7 +91,7 @@ public class Config {
 		CryptoFactoryBean cryptoFactoryBean = new CryptoFactoryBean();
 		
 		cryptoFactoryBean.setKeyStorePassword("damith");
-		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/development_companyinfo_bridgefund_nl_p7b.jks"));
+		cryptoFactoryBean.setKeyStoreLocation(new FileSystemResource("/home/ubuntu/final.jks"));
 		cryptoFactoryBean.setKeyStoreType("JKS");
 		cryptoFactoryBean.setTrustStorePassword("damith");
 		
@@ -106,17 +106,19 @@ public class Config {
         //wss4jSecurityInterceptor.setSecurementSignatureDigestAlgorithm("http://www.w3.org/2000/09/xmldsig#sha1");
         
 		
-		
 		wss4jSecurityInterceptor.setSecurementSignatureParts(
 	                "{Element}{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd}Timestamp;" +
 	                "{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body"
+	                //"{Element}{http://schemas.kvk.nl/schemas/hrip/dataservice/2015/02}ophalenInschrijvingRequest"
+	                //"{Element}{http://www.w3.org/2005/08/addressing}Header"
 	        );
+		
 		
 		
 		wss4jSecurityInterceptor.setValidationActions("Signature Timestamp");
 		
-		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
-		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
+//		wss4jSecurityInterceptor.setValidationDecryptionCrypto(cryptoFactoryBean.getObject());
+//		wss4jSecurityInterceptor.setValidationSignatureCrypto((cryptoFactoryBean.getObject()));
 		
 		
 		wss4jSecurityInterceptor.setSecurementSignatureKeyIdentifier("DirectReference");
@@ -124,32 +126,32 @@ public class Config {
 		return wss4jSecurityInterceptor;
 	}
 	
-//	 @Bean
-//	    public Boolean disableSSLValidation() throws Exception {
-//	        final SSLContext sslContext = SSLContext.getInstance("TLS");
-//
-//	        sslContext.init(null, new TrustManager[]{new X509TrustManager() {
-//	            @Override
-//	            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
-//	            }
-//
-//	            @Override
-//	            public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
-//	            }
-//
-//	            @Override
-//	            public X509Certificate[] getAcceptedIssuers() {
-//	                return new X509Certificate[0];
-//	            }
-//	        }}, null);
-//
-//	        HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
-//	        HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
-//	            public boolean verify(String hostname, SSLSession session) {
-//	                return true;
-//	            }
-//	        });
-//
-//	        return true;
-//	    }
+	 @Bean
+	    public Boolean disableSSLValidation() throws Exception {
+	        final SSLContext sslContext = SSLContext.getInstance("TLS");
+
+	        sslContext.init(null, new TrustManager[]{new X509TrustManager() {
+	            @Override
+	            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+	            }
+
+	            @Override
+	            public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+	            }
+
+	            @Override
+	            public X509Certificate[] getAcceptedIssuers() {
+	                return new X509Certificate[0];
+	            }
+	        }}, null);
+
+	        HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+	        HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+	            public boolean verify(String hostname, SSLSession session) {
+	                return true;
+	            }
+	        });
+
+	        return true;
+	    }
 }

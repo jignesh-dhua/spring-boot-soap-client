@@ -2,8 +2,10 @@ package com.example.howtodoinjava.springbootsoapclient;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.net.URISyntaxException;
 import java.util.UUID;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -16,8 +18,12 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.SoapHeader;
 import org.springframework.ws.soap.SoapHeaderElement;
 import org.springframework.ws.soap.SoapMessage;
+import org.springframework.ws.soap.addressing.client.ActionCallback;
 import org.springframework.ws.soap.saaj.SaajSoapMessage;
 import org.springframework.xml.transform.StringSource;
+
+import com.example.howtodoinjava.schemas.school.InschrijvingResponseType;
+
 
 public class SOAPConnector extends WebServiceGatewaySupport {
 
@@ -35,10 +41,14 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 //		    transformer.transform(source,result);
 		    
 		    
+		    ActionCallback actionCallback = new ActionCallback("http://es.kvk.nl/ophalenInschrijving");
 		    
-		    getWebServiceTemplate().sendSourceAndReceiveToResult(source, new WebServiceMessageCallback() {
-
-		        public void doWithMessage(WebServiceMessage message) {
+		    
+		    getWebServiceTemplate().sendSourceAndReceiveToResult(source, 
+		    		actionCallback,
+//		    new WebServiceMessageCallback() {
+//
+//		        public void doWithMessage(WebServiceMessage message) {
 //		            try {
 //		                SoapMessage soapMessage = (SoapMessage)message;
 //		                SoapHeader header = soapMessage.getSoapHeader();
@@ -55,20 +65,21 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		        	
 		        	
 		        	
-		        	SaajSoapMessage soapMessage = (SaajSoapMessage) message;
-		            SoapHeaderElement messageId =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "MessageID", "wsa"));
-		            messageId.setText("uuid:" + UUID.randomUUID().toString());
-		            
-		            
-		            SoapHeaderElement to =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "To", "wsa"));
-		            to.setText("http://es.kvk.nl/kvk-DataservicePP/2015/02");
-		            
-		            SoapHeaderElement action =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "Action", "wsa"));
-		            action.setText("http://es.kvk.nl/ophalenInschrijving");
+//		        	SaajSoapMessage soapMessage = (SaajSoapMessage) message;
+//		            SoapHeaderElement messageId =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "MessageID", "wsa"));
+//		            messageId.setText("uuid:" + UUID.randomUUID().toString());
+//		            
+//		            
+//		            SoapHeaderElement to =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "To", "wsa"));
+//		            to.setText("http://es.kvk.nl/kvk-DataservicePP/2015/02");
+//		            
+//		            SoapHeaderElement action =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "Action", "wsa"));
+//		            action.setText("http://es.kvk.nl/ophalenInschrijving");
 		        	
 		        	
-		        }
-		    },result);
+//		        }
+//		    },
+		    result);
 		                
 		    
 	       // getWebServiceTemplate().sendSourceAndReceiveToResult(source, result);
@@ -83,4 +94,12 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		
 		return null;//getWebServiceTemplate().marshalSendAndReceive(url, request);
 	}
+	
+	 public JAXBElement<InschrijvingResponseType> queryByDocketId(JAXBElement<InschrijvingResponseType> request) throws URISyntaxException{
+		 
+		 ActionCallback actionCallback = new ActionCallback("http://es.kvk.nl/ophalenInschrijving");
+	        return (JAXBElement<InschrijvingResponseType>) getWebServiceTemplate()
+	                .marshalSendAndReceive(request,actionCallback);
+
+	    }
 }
