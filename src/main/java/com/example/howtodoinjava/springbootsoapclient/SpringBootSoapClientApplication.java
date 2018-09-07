@@ -118,7 +118,7 @@ public class SpringBootSoapClientApplication {
 	@Bean
 	CommandLineRunner lookup(SOAPConnector soapConnector) {
 		return args -> {
-			String response = soapConnector.callWebService("https://webservices.preprod.kvk.nl/postbus2", request2);
+			String response = soapConnector.callWebService("https://webservices.preprod.kvk.nl/postbus2", request1);
 			System.out.println("Got Response As below ========= : ");
 			System.out.println("Response : "+response);
 
