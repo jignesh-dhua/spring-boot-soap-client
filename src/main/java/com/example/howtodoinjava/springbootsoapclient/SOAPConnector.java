@@ -2,6 +2,7 @@ package com.example.howtodoinjava.springbootsoapclient;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ import org.springframework.ws.soap.SoapHeader;
 import org.springframework.ws.soap.SoapHeaderElement;
 import org.springframework.ws.soap.SoapMessage;
 import org.springframework.ws.soap.addressing.client.ActionCallback;
+import org.springframework.ws.soap.addressing.messageid.MessageIdStrategy;
 import org.springframework.ws.soap.saaj.SaajSoapMessage;
 import org.springframework.xml.transform.StringSource;
 
@@ -42,7 +44,21 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		    
 		    
 		    ActionCallback actionCallback = new ActionCallback("http://es.kvk.nl/ophalenInschrijving");
-		    
+		    actionCallback.setMessageIdStrategy(new MessageIdStrategy() {
+				
+		    	public static final String PREFIX = "uuid:";
+
+		    	/** Returns {@code false}. */
+		    	@Override
+		    	public boolean isDuplicate(URI messageId) {
+		    		return false;
+		    	}
+
+		    	@Override
+		    	public URI newMessageId(SoapMessage message) {
+		    		return URI.create(PREFIX + UUID.randomUUID().toString());
+		    	}
+			});
 		    
 		    getWebServiceTemplate().sendSourceAndReceiveToResult(source, 
 		    		actionCallback,
