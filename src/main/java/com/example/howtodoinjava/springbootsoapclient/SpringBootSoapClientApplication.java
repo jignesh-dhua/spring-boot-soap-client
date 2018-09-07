@@ -109,10 +109,16 @@ public class SpringBootSoapClientApplication {
 			"         <ns:rsin>992353427</ns:rsin>\n" + 
 			"      </ns:ophalenInschrijvingRequest>";
 	
+	
+	String request2= "<ns:ophalenVestigingRequest xmlns:ns=\"http://schemas.kvk.nl/schemas/hrip/dataservice/2015/02\">\n" + 
+			"	<ns:klantreferentie>SoapUI-TEST</ns:klantreferentie>\n" + 
+			"	<ns:vestigingsnummer>000000348422</ns:vestigingsnummer>\n" + 
+			"</ns:ophalenVestigingRequest>";
+	
 	@Bean
 	CommandLineRunner lookup(SOAPConnector soapConnector) {
 		return args -> {
-			String response = soapConnector.callWebService("https://webservices.preprod.kvk.nl/postbus2", request1);
+			String response = soapConnector.callWebService("https://webservices.preprod.kvk.nl/postbus2", request2);
 			System.out.println("Got Response As below ========= : ");
 			System.out.println("Response : "+response);
 
