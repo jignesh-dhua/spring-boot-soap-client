@@ -43,28 +43,30 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 //		    transformer.transform(source,result);
 		    
 		    
-		    ActionCallback actionCallback = new ActionCallback("http://es.kvk.nl/ophalenInschrijving");
-		    actionCallback.setMessageIdStrategy(new MessageIdStrategy() {
-				
-		    	public static final String PREFIX = "uuid:";
-
-		    	/** Returns {@code false}. */
-		    	@Override
-		    	public boolean isDuplicate(URI messageId) {
-		    		return false;
-		    	}
-
-		    	@Override
-		    	public URI newMessageId(SoapMessage message) {
-		    		return URI.create(PREFIX + UUID.randomUUID().toString());
-		    	}
-			});
+//		    ActionCallback actionCallback = new ActionCallback("http://es.kvk.nl/ophalenInschrijving");
+//		    actionCallback.setMessageIdStrategy(new MessageIdStrategy() {
+//				
+//		    	public static final String PREFIX = "uuid:";
+//
+//		    	/** Returns {@code false}. */
+//		    	@Override
+//		    	public boolean isDuplicate(URI messageId) {
+//		    		return false;
+//		    	}
+//
+//		    	@Override
+//		    	public URI newMessageId(SoapMessage message) {
+//		    		return URI.create(PREFIX + UUID.randomUUID().toString());
+//		    	}
+//			});
+		    
+		    
 		    
 		    getWebServiceTemplate().sendSourceAndReceiveToResult(source, 
-		    		actionCallback,
-//		    new WebServiceMessageCallback() {
-//
-//		        public void doWithMessage(WebServiceMessage message) {
+//		    		actionCallback,
+		    new WebServiceMessageCallback() {
+
+		        public void doWithMessage(WebServiceMessage message) {
 //		            try {
 //		                SoapMessage soapMessage = (SoapMessage)message;
 //		                SoapHeader header = soapMessage.getSoapHeader();
@@ -81,20 +83,20 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		        	
 		        	
 		        	
-//		        	SaajSoapMessage soapMessage = (SaajSoapMessage) message;
-//		            SoapHeaderElement messageId =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "MessageID", "wsa"));
-//		            messageId.setText("uuid:" + UUID.randomUUID().toString());
-//		            
-//		            
-//		            SoapHeaderElement to =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "To", "wsa"));
-//		            to.setText("http://es.kvk.nl/kvk-DataservicePP/2015/02");
-//		            
-//		            SoapHeaderElement action =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "Action", "wsa"));
-//		            action.setText("http://es.kvk.nl/ophalenInschrijving");
+		        	SaajSoapMessage soapMessage = (SaajSoapMessage) message;
+		            SoapHeaderElement messageId =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "MessageID", "wsa"));
+		            messageId.setText("uuid:" + UUID.randomUUID().toString());
+		            
+		            
+		            SoapHeaderElement to =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "To", "wsa"));
+		            to.setText("http://es.kvk.nl/kvk-DataservicePP/2015/02");
+		            
+		            SoapHeaderElement action =  soapMessage.getSoapHeader().addHeaderElement(new QName("http://www.w3.org/2005/08/addressing", "Action", "wsa"));
+		            action.setText("http://es.kvk.nl/ophalenInschrijving");
 		        	
 		        	
-//		        }
-//		    },
+		        }
+		    },
 		    result);
 		                
 		    
